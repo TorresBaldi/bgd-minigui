@@ -1,6 +1,8 @@
 # MiniGUI
 v1.2
 
+BennuGD Simple library to manage basic GUI widgets
+
 ## Changelog
 
 [v1.2]
@@ -16,4 +18,4 @@ v1.2
 [v1.0]
 
  - Release inicial
- 
+
