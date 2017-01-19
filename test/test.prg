@@ -28,30 +28,22 @@ GLOBAL
 	int fullscreen = false;
 
 	int desktop_x, desktop_y;
-	
+
 	int window1, button1, stepper = 5;
-	
+
 	int window2, button2, button3;
-	
+
 	int window3;
-	
+
 	int button;
-	
+
 	string archivo = "";
-	
+
 END
 
-//include "minigui.lib";
 
-include "prg/gui-globals.prg";
-include "prg/gui-funciones.prg";
-include "gui-control-cursor.prg";
-include "gui-control-window.prg";
-include "gui-control-button.prg";
-include "gui-control-textbox.prg";
-include "gui-control-label.prg";
-include "gui-control-dirlist.prg";
-include "gui-control-stepper.prg";
+// test.prg must be run from parent folder to be able to find routes correctly
+include "../minigui.prg";
 
 
 BEGIN
@@ -69,25 +61,25 @@ BEGIN
 		set_mode(SCREEN_X, SCREEN_Y, SCREEN_D, mode_window + MODE_WAITVSYNC);
 		set_window_pos(desktop_x/2 - SCREEN_X/2, desktop_y/2 - SCREEN_Y/2);
 	end
-	
+
 	// muestro variables en pantalla
 	write_var(0,0,0,0,fps);
 	write_var(0,0,20,0,minigui.lclick);
 	write_var(0,0,30,0,minigui.rclick);
 	write_var(0,0,40,0,minigui.dbclick);
-	
+
 	write_var(0,0,60,0,minigui.hover_id);
 	write_var(0,0,70,0,minigui.active_id);
-	
+
 	// inicio la gui
 	gui_start(16, rgb(20, 20, 20), rgb(10, 50, 200), rgb(10, 100, 200), rgb(200, 200, 200));
 	gui_cursor("png/cursor.png");
-	
+
 	// creo ventana A
 	window1 = gui_window(320, 150, 200, 200, "Ventana A", true);
 	gui_button(320, 100, 100, 60, window1, "Boton", &button1);
 	gui_stepper(320, 160, 50, 24, window1, 1, 10, 1, &stepper);
-	
+
 	// creo ventana B
 	window2 = gui_window(200, 150, 200, 300, "Ventana B", true);
 	gui_button(200+50, 280, 80, 30, window2, "Boton", &button1);
@@ -96,18 +88,18 @@ BEGIN
 
 	// creo ventana C
 	window3 = gui_window(350, 350, 200, 150, "Ventana C", true);
-	
+
 	//creo botones sueltos
 	gui_button(520, 300, 100, 30, NULL, "Boton Suelto", &button);
-	
+
 	// main loop
 	loop
-	
+
 		if ( key ( _esc ) or exit_status )
 			exit();
 		end
 
 		frame;
-		
+
 	end
 END
